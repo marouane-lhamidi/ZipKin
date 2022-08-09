@@ -3,10 +3,9 @@ package mobi.ms1.controller;
 import mobi.ms1.model.Message;
 import mobi.ms1.model.ReceivedMessage;
 import mobi.ms1.service.MessageService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -29,5 +28,12 @@ public class MessageController {
     {
         return messageService.receivingMessage(message);
     }
+
+    @PostMapping("/random/{repetition}")
+    List<ReceivedMessage> random(@PathVariable(name = "repetition") int repetition)
+    {
+        return messageService.random(repetition);
+    }
+
 
 }
